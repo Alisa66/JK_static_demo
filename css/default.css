@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    font-family: PingFang SC,Hiragino Sans GB,Helvetica Neue,Microsoft Yahei,Arial,sans-serif;
+    font-size: 14px;
+    color: #383838;
+
+}
+li {
+    list-style: none;
+}
+#wheelWrapper {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow: hidden;
+}
+.wheel{
+    height: 1000px;
+    /*background: #ffe411;*/
+    font-size: 100px;
+    border-bottom: 0px;
+}

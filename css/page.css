@@ -1,0 +1,305 @@
+/*第一页page样式*/
+/*头部样式*/
+.wheel.page_1{
+    background: url("../image/first-bg.b61f989.jpg");
+    background-size: cover;
+    background-color: #ffe411
+}
+.wheel.page_1 .head {
+    padding-top: 30px;
+    margin-left: 5%;
+    position: relative;
+    height: 100px;
+}
+.head .logo {
+    width: 73px;
+    height: 36px;
+    background: url("../image/logo.page1a.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    float: left;
+}
+.title {
+    float: right;
+    font-size: 18px;
+    color: #000;
+    text-align: center;
+    margin-right: 56px;
+}
+a {
+    text-decoration: none;
+    color: #404040;
+    padding-right: 74px;
+
+}
+a:hover {
+    color: #000;
+}
+a:visited {
+    color: #000;
+}
+/*内容区域*/
+.wheel.page_1 .content {
+    width: 80%;
+    height: 666px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.content .pic {
+    width: 50%;
+    height: 80%;
+    background: url("../image/slogan.e4d6ded.png");
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 6%;
+    top: 20%;
+    float: left;
+}
+.pic .vision{
+    width: 200px;
+    height: 330px;
+    /*background-color: aliceblue;*/
+    position: absolute;
+    left: -23px;
+    top: -80px;
+    background: url("../image/tip.vision.png");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    transform:rotate(-9deg);
+
+}
+.content .video {
+    width: calc(70vw + 44px);
+    height: calc(16 / 9 * 20vw + 128px);
+    min-width: 225px;
+    max-width: 347px;
+    min-height: 100px;
+    max-height: 600px;
+    background-color: #fff;
+    border-radius: 45px;
+    padding: 33px 20px;
+    float: right;
+}
+
+
+.wheel.page_1 .foot{
+    display: flex;
+    margin-top: 18px;
+    position: relative;
+}
+.foot .erweima{
+    background: url("../image/qr-code.688c7d6.png");
+    width: 60px;
+    height: 60px;
+    background-size: 100%;
+    cursor: pointer;
+     text-align: center;
+    margin-left: 100px;
+    margin-right: 20px;
+}
+.foot .erweima:hover{
+    background: url("../image/qr-code-hover.8796a47.png");
+    width: 60px;
+    height: 60px;
+    background-size: 100%;
+}
+.foot .apple {
+    width: 150px;
+    height: 60px;
+    background: url('../image/download-apple.286089b.png') #404040 no-repeat 50%/100%;
+    border-radius: 8px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.foot .apple:hover{
+    width: 150px;
+    height: 60px;
+    border-radius: 8px;
+    background:url("../image/download-apple-hover.f74ad3a.png") #404040 no-repeat 50%/100%;
+}
+.foot .android {
+    width: 150px;
+    height: 60px;
+    background:url("../image/download-android.24f81c5.png") #404040 no-repeat 50%/100%;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.foot .android:hover{
+    width: 150px;
+    height: 60px;
+    border-radius: 8px;
+    background:url("../image/download-android-hover.47bc36c.png") #404040 no-repeat 50%/100%;
+}
+.foot .arrow{
+    position: absolute;
+    left: 50%;
+    bottom: -48px;
+    background-image: url("../image/arrow-up.e4bea9d.png");
+    width: 50px;
+    height: 25px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    animation: 3s shakeArrow infinite
+}
+
+/*第二页样式*/
+.wheel.page_2{
+    background: url("../image/second-bg.png");
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    padding-left: 120px;
+    display: flex;
+    position: relative;
+}
+.mobile{
+    width: 310px;
+    height: 630px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 100% auto;
+    background-image: url(https://cdn.ruguoapp.com/jike-site/static/images/topic-A.0606fe7.png);
+    margin-right: 200px;
+    left: 22%;
+    top: 17%;
+}
+.sub-title{
+    position: relative;
+    top:31%;
+    left: 17%;
+    height: 600px;
+}
+.sub-title span{
+    font-family: Yuanti SC;
+    font-size: 40px;
+    font-weight: 600;
+    color: #404040;
+    margin-bottom: 14px;
+}
+.sub-title div{
+    font-size: 22px;
+    color: gray;
+    line-height: 43px;
+}
+
+/*第三页样式*/
+.wheel.page_3{
+    /*background-image: url("../image/third-mask.png");*/
+    /*background-size: auto 100%;*/
+    background-color: #ffe411;
+    position: relative;
+}
+.mobile-notification{
+    width: 48.82vh;
+    height: 76vh;
+    min-width: 390px;
+    min-height: 608px;
+    margin-left: 120px;
+    background-image: url(https://cdn.ruguoapp.com/jike-site/static/images/mobile-notification.8a87bfb.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-color: #fff;
+    border-right: 22px solid #fff;
+    position: absolute;
+    border-left: 22px solid #fff;
+    left: 50%;
+    top: 13%;
+}
+.third-section-mask{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url(https://cdn.ruguoapp.com/jike-site/static/images/third-mask.8a73946.png);
+    background-size: auto 100%;
+    top: 0;
+    left: 0;
+}
+/*第四页央视*/
+.wheel.page_4{
+    background-image: url("../image/forth-bg.png");
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+    margin: 0;
+}
+.page_4 .mobile{
+    left: 24%;
+    top: 17%
+}
+.page_4 .sub-title{
+    position: relative;
+    left:49%;
+    top:-30%;
+}
+
+/*第五页样式*/
+.wheel.page_5{
+    background-image: url("../image/fifth-bg.png");
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 90%;
+    padding-left: 120px;
+    margin: 0;
+    background-color: #ffe411;
+}
+.page_5 .contact{
+    height: 100px;
+    position: relative;
+    bottom: -65%;
+    left: 26%;
+
+}
+.btngroup{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    position: absolute;
+    margin-left: 10%;
+}
+.join,.contacts{
+    padding: 20px 28px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #404040;
+    border: 4px solid #404040;
+    border-radius: 35px;
+    margin: 0 30px;
+    cursor: pointer;
+}
+.icon{
+    position: relative;
+    display: flex;
+    left: 43%;
+    top: 68%;
+}
+.weixin{
+    width: 32px;
+    height: 32px;
+    background-image: url('../image/weixin.png');
+    margin-right: 50px;
+
+}
+.weibo{
+    width: 32px;
+    height: 32px;
+    background-image: url("../image/weibo.png");
+    margin-right: 50px;
+}
+.zhihu{
+    width: 32px;
+    height: 32px;
+    background-image: url("../image/zhihu.png");
+}
+
+.links{
+    position: relative;
+    bottom: -72%;
+    left: 33%;
+    font-size: 14px;
+    color: #404040;
+    font-weight: 600;
+}
+

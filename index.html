@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>即刻官网</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <link rel="stylesheet" href="css/default.css">
+    <link rel="stylesheet" href="css/page.css">
+</head>
+<body>
+<div id="wheelWrapper">
+    <ul id="wheelUl">
+        <li>
+            <div class="wheel page_1">
+                <div class="head">
+                    <div class="logo"></div>
+                    <div class="title">
+                        <a href="#">网页版</a>
+                        <a href="#">加入即刻</a>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="pic">
+                        <div class="vision"></div>
+                    </div>
+                    <div>
+                        <video  class="video"  loop  controls src="https://cdn.ruguoapp.com/1080.mp4"></video>
+                    </div>
+                </div>
+                <div class="foot">
+                    <div class="erweima"></div>
+                    <div class="apple"></div>
+                    <div class="android"></div>
+                    <div class="arrow"></div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="wheel page_2">
+                <div class="mobile"></div>
+                <div class="sub-title">
+                    <span>我关心的，即刻都知道</span>
+                    <br>
+                    <div>每时每刻，三十万细分的兴趣主题为你追踪你想知道的任何信息。
+                        <br/>
+                        一有更新，「即刻」告诉你。
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="wheel page_3">
+                <div class="sub-title">
+                    <span>告别标题党，拒绝垃圾推送</span>
+                    <div>
+                        即刻以算法与人工智慧精挑细选,让信息一目了然<br/>
+                        确保你收到的每一条消息，都值得被推送<br>
+                    </div>
+                </div>
+                <div class="mobile-notification">
+                </div>
+                <div class="third-section-mask"></div>
+            </div>
+        </li>
+        <li>
+            <div class="wheel page_4">
+                <div class="mobile"></div>
+                <div class="sub-title">
+                    <span>与更多同好分享你的见闻与感受</span>
+
+                    <br>
+                    <div>
+                        每一个独到的声音，都值得被更多人倾听。<br/>
+                        在即刻，你不仅可以创建主题，更新动态，<br>
+                        还可以在主题中发表观点或见闻，更深度地参与内容分享。
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="wheel page_5">
+                <div class="contact">
+                    <div class="btngroup">
+                        <div class="join">加入即刻</div>
+                        <div class="contacts">联系我们</div>
+                    </div>
+
+                </div>
+                <div class="icon">
+                    <div class="weixin"></div>
+                    <div class="weibo"></div>
+                    <div class="zhihu"></div>
+
+                </div>
+                <div class="links">
+                    上海若友网络科技有限公司
+                    &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+                    沪ICP备15000478号-1
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+                    沪公网安备 31011002
+                </div>
+            </div>
+
+        </li>
+    </ul>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    // 当前所显示页面的索引数
+    var currentShowPageIndex = 0;
+    var animateTimeout = null;
+    var isWheelAnimating = false;
+    // 判断鼠标是向上还是向下滚动，如果是向上为true
+    // 向下为false
+    var isWheelUp = function (event) {
+        event = event || window.event;
+        var up = true;
+        if (event.wheelDelta) {//IE/Opera/Chrome
+            up = event.wheelDelta / 120 == 1 ? false : true;
+        } else {//Firefox
+            up = event.detail / 3 == 1 ? false : true;
+        }
+        console.log(up)
+        return up;
+    }
+
+    // 运动效果
+    // obj是谁运动 mode是运动方式 from是开始距离 to是结束距离
+    var animate = function (obj, mode, from, to) {
+        if (animateTimeout) {
+            clearTimeout(animateTimeout);
+        }
+        if (mode == "top") {
+            if (from > to) {
+                from = from - 50;
+                obj.style.marginTop = (from) + "px";
+                setTimeout(function () {
+                    animate(obj, mode, from, to);
+                }, 30);
+            } else {
+                isWheelAnimating = false;
+            }
+            return;
+        }
+        if (from < to) {
+            from = from + 50;
+            obj.style.marginTop = (from) + "px";
+            setTimeout(function () {
+                animate(obj, mode, from, to);
+            }, 30);
+        } else {
+            isWheelAnimating = false;
+        }
+    }
+
+    var mouseWheel = function (event) {
+        if (isWheelAnimating) {
+            return;
+        }
+        isWheelAnimating = true;
+        var wheelUp = isWheelUp(event);
+        var showPageUl = document.getElementById('wheelUl');
+        var showPageLiList = showPageUl.getElementsByTagName('li');
+        var showPageLiListLength = showPageLiList.length;
+
+        // 判断是向上还是向下滚动了
+        // 向下滚动
+        if (wheelUp && currentShowPageIndex < showPageLiListLength - 1) {
+
+            console.log(currentShowPageIndex);
+            currentShowPageIndex++;// 因为这个已经加1 了
+            var from = -(currentShowPageIndex - 1) * 1000;
+            var to = -(currentShowPageIndex) * 1000;
+            animate(showPageUl, "top", from, to);
+            return;
+        }
+        if (!wheelUp && currentShowPageIndex > 0) {
+            currentShowPageIndex--;
+            var from = -(currentShowPageIndex + 1) * 1000;
+            var to = -(currentShowPageIndex) * 1000;
+            //console.log(document.body.clientHeight);
+            animate(showPageUl, "down", from, to);
+            return;
+        }
+        isWheelAnimating = false;
+    };
+    if (document.addEventListener) {
+        document.addEventListener('DOMMouseScroll', function (event) {
+            mouseWheel(event);
+        }, false);
+    }
+    document.onmousewheel = function (event) {
+        mouseWheel(event);
+    }
+</script>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>仿照wheel</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 100%;
+            width: 100%;
+        }
+        li {
+            list-style: none;
+        }
+        #wheelWrapper {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            overflow: hidden;
+        }
+        .wheel{
+            height: 1000px;
+            background: #FAAA3C;
+            border-radius: 10px;
+            font-size: 100px;
+            text-align: center;
+            border:1px solid forestgreen;
+            border-bottom: 0px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="wheelWrapper">
+        <ul id="wheelUl">
+            <li><div class="wheel">1_page1</div></li>
+            <li><div class="wheel">2_page2</div></li>
+            <li><div class="wheel">3_page3</div></li>
+            <li><div class="wheel">4_page4</div></li>
+            <li><div class="wheel">5_page5</div></li>
+        </ul>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    // 当前所显示页面的索引数
+    var currentShowPageIndex = 0;
+    var animateTimeout = null;
+    var isWheelAnimating = false;
+    // 判断鼠标是向上还是向下滚动，如果是向上为true
+    // 向下为false
+    var isWheelUp = function (event) {
+        event = event || window.event;
+        var up = true;
+        if (event.wheelDelta) {//IE/Opera/Chrome
+            up = event.wheelDelta / 120 == 1 ? false : true;
+        } else {//Firefox
+            up = event.detail / 3 == 1 ? false : true;
+        }
+        console.log(up)
+        return up;
+    }
+
+    // 运动效果
+    // obj是谁运动 mode是运动方式 from是开始距离 to是结束距离
+    var animate = function (obj, mode, from, to) {
+        if (animateTimeout) {
+            clearTimeout(animateTimeout);
+        }
+        if(mode == "top"){
+            if (from > to) {
+                 from = from - 50;
+                obj.style.marginTop = (from) + "px";
+                setTimeout(function () {
+                    animate(obj, mode, from, to);
+                }, 30);
+            } else {
+                isWheelAnimating = false;
+            }
+            return;
+        }
+        if (from < to) {
+             from = from + 50;
+            obj.style.marginTop = (from) + "px";
+            setTimeout(function () {
+                animate(obj, mode, from, to);
+            }, 30);
+        } else {
+            isWheelAnimating = false;
+        }
+    }
+
+    var mouseWheel = function (event) {
+        if (isWheelAnimating) {
+            return;
+        }
+        isWheelAnimating = true;
+        var wheelUp = isWheelUp(event);
+        var showPageUl = document.getElementById('wheelUl');
+        var showPageLiList = showPageUl.getElementsByTagName('li');
+        var showPageLiListLength = showPageLiList.length;
+
+        // 判断是向上还是向下滚动了
+        // 向下滚动
+        if (wheelUp && currentShowPageIndex < showPageLiListLength - 1) {
+
+            console.log(currentShowPageIndex);
+            currentShowPageIndex++;// 因为这个已经加1 了
+            var from = -(currentShowPageIndex - 1) * 1000;
+            var to = -(currentShowPageIndex) * 1000;
+            animate(showPageUl,"top",from,to);
+            return;
+        }
+        if (!wheelUp && currentShowPageIndex > 0) {
+            currentShowPageIndex--;
+            var from = -(currentShowPageIndex + 1) * 1000;
+            var to = -(currentShowPageIndex) * 1000;
+            //console.log(document.body.clientHeight);
+            animate(showPageUl, "down", from, to);
+            return;
+        }
+        isWheelAnimating = false;
+    };
+    if (document.addEventListener) {
+        document.addEventListener('DOMMouseScroll', function (event) {
+            mouseWheel(event);
+        }, false);
+    }
+    document.onmousewheel = function (event) {
+        mouseWheel(event);
+    }
+</script>
